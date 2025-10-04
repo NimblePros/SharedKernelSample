@@ -1,4 +1,4 @@
-﻿namespace Ardalis.SharedKernel;
+﻿namespace NimblePros.SharedKernel;
 
 /// <summary>
 /// A base class for DDD Entities. Includes support for domain events dispatched post-persistence.

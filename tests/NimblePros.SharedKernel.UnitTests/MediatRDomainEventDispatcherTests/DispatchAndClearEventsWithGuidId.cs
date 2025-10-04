@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
-namespace Ardalis.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
+namespace NimblePros.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
 
 public class DispatchAndClearEventsWithGuidId
 {

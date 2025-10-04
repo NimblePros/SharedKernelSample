@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="nuget.config" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/NimblePros.SharedKernel/NimblePros.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NimblePros.SharedKernel.UnitTests/NimblePros.SharedKernel.UnitTests.csproj" />
+  </Folder>
+</Solution>

@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using FluentAssertions;
 
-namespace Ardalis.SharedKernel.UnitTests.DomainEventBaseTests;
+namespace NimblePros.SharedKernel.UnitTests.DomainEventBaseTests;
 
 public class DomainEventBase_Constructor
 {

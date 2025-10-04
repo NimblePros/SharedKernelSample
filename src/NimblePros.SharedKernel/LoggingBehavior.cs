@@ -4,7 +4,7 @@ using Ardalis.GuardClauses;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Ardalis.SharedKernel;
+namespace NimblePros.SharedKernel;
 
 /// <summary>
 /// Adds logging for all requests in MediatR pipeline.

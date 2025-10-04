@@ -1,4 +1,4 @@
-﻿namespace Ardalis.SharedKernel;
+﻿namespace NimblePros.SharedKernel;
 
 public interface IHasDomainEvents
 {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Ardalis.SharedKernel;
+namespace NimblePros.SharedKernel;
 
 public class MediatRDomainEventDispatcher : IDomainEventDispatcher
 {

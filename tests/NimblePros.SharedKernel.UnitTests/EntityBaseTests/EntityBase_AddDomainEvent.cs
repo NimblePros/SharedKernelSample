@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace Ardalis.SharedKernel.UnitTests.EntityBaseTests;
+namespace NimblePros.SharedKernel.UnitTests.EntityBaseTests;
 
 public class EntityBase_AddDomainEvent
 {
