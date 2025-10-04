@@ -1,9 +1,9 @@
-﻿using MediatR;
+﻿using Mediator;
 
 namespace NimblePros.SharedKernel;
 
 /// <summary>
-/// A base type for domain events. Depends on MediatR INotification.
+/// A base type for domain events. Depends on Mediator INotification.
 /// Includes DateOccurred which is set on creation.
 /// </summary>
 public abstract class DomainEventBase : INotification

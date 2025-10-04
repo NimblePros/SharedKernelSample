@@ -1,14 +1,14 @@
 ﻿using FluentAssertions;
-using MediatR;
+using Mediator;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
-namespace NimblePros.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
+namespace NimblePros.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
 
-public class DispatchAndClearEventsWithMixedIds
+public class DispatchAndClearEventsWithMixedIds : INotificationHandler<DispatchAndClearEventsWithMixedIds.TestDomainEvent>
 {
-  private class TestDomainEvent : DomainEventBase { }
+  public class TestDomainEvent : DomainEventBase { }
   public readonly record struct StronglyTyped { }
 
   private class TestEntity : EntityBase
@@ -41,7 +41,7 @@ public class DispatchAndClearEventsWithMixedIds
   {
     // Arrange
     var mediatorMock = new Mock<IMediator>();
-    var domainEventDispatcher = new MediatRDomainEventDispatcher(mediatorMock.Object, NullLogger<MediatRDomainEventDispatcher>.Instance);
+    var domainEventDispatcher = new MediatorDomainEventDispatcher(mediatorMock.Object, NullLogger<MediatorDomainEventDispatcher>.Instance);
     var entity = new TestEntity();
     var entityGuid = new TestEntityGuid();
     var entityStronglyTyped = new TestEntityStronglyTyped();
@@ -58,4 +58,9 @@ public class DispatchAndClearEventsWithMixedIds
     entityGuid.DomainEvents.Should().BeEmpty();
     entityStronglyTyped.DomainEvents.Should().BeEmpty();
   }
+
+    public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }

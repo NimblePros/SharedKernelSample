@@ -1,14 +1,14 @@
 ﻿using FluentAssertions;
-using MediatR;
+using Mediator;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
-namespace NimblePros.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
+namespace NimblePros.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
 
-public class DispatchAndClearEvents
+public class DispatchAndClearEvents : INotificationHandler<DispatchAndClearEvents.TestDomainEvent>
 {
-  private class TestDomainEvent : DomainEventBase { }
+  public class TestDomainEvent : DomainEventBase { }
   private class TestEntity : EntityBase
   {
     public void AddTestDomainEvent()
@@ -23,7 +23,7 @@ public class DispatchAndClearEvents
   {
     // Arrange
     var mediatorMock = new Mock<IMediator>();
-    var domainEventDispatcher = new MediatRDomainEventDispatcher(mediatorMock.Object, NullLogger<MediatRDomainEventDispatcher>.Instance);
+    var domainEventDispatcher = new MediatorDomainEventDispatcher(mediatorMock.Object, NullLogger<MediatorDomainEventDispatcher>.Instance);
     var entity = new TestEntity();
     entity.AddTestDomainEvent();
 
@@ -34,4 +34,9 @@ public class DispatchAndClearEvents
     mediatorMock.Verify(m => m.Publish(It.IsAny<DomainEventBase>(), It.IsAny<CancellationToken>()), Times.Once);
     entity.DomainEvents.Should().BeEmpty();
   }
+
+    public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }
