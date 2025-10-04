@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-using Mediator;
-using Xunit;
+﻿using Mediator;
 
 namespace NimblePros.SharedKernel.UnitTests.EntityBaseTests;
 

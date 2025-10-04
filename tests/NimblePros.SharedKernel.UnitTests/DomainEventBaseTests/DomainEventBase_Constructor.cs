@@ -1,6 +1,4 @@
-﻿using Xunit;
-using FluentAssertions;
-using Mediator;
+﻿using Mediator;
 
 namespace NimblePros.SharedKernel.UnitTests.DomainEventBaseTests;
 

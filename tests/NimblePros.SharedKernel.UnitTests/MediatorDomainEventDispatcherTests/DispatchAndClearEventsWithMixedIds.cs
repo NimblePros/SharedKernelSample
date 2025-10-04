@@ -1,8 +1,6 @@
-﻿using FluentAssertions;
-using Mediator;
+﻿using Mediator;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
-using Xunit;
 
 namespace NimblePros.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
 

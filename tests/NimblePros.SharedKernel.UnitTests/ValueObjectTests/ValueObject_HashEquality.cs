@@ -1,7 +1,5 @@
-﻿using FluentAssertions;
-using Xunit;
+﻿namespace NimblePros.SharedKernel.UnitTests.ValueObjectTests;
 
-namespace NimblePros.SharedKernel.UnitTests.ValueObjectTests;
 public class ValueObject_HashEquality
 {
   [Fact]
