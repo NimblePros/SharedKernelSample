@@ -15,8 +15,11 @@
     <PackageIcon>icon.png</PackageIcon>
     <Version>3.0.0</Version>
     <PackageReleaseNotes>
-      * Namespace from Ardalis to NimblePros
-    </PackageReleaseNotes>
+		* Namespace from Ardalis to NimblePros
+		* Updated dependencies
+		* Swapped MediatR to Mediator
+		* Swapped FluentAssertions to AwesomeAssertions
+	</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
