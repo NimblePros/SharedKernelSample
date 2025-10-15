@@ -1,5 +1,6 @@
-# Ardalis.SharedKernel
-Some useful base classes, mainly used with the CleanArchitecture template. Also, a template to make your own SharedKernel nuget package.
+# NimblePros.SharedKernel
+
+Some useful base classes, mainly used with the CleanArchitecture template sample app. Also, a template to make your own SharedKernel nuget package.
 
 ## Make Your Own!
 
@@ -8,4 +9,3 @@ You should probably fork or copy the classes in this repo and create your own `A
 ## References
 
 - [Clean Architecture Template GitHub Repo](https://github.com/ardalis/cleanarchitecture)
-- [C# Record Struct for Value Objects](https://nietras.com/2021/06/14/csharp-10-record-struct/)
