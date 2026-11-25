@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      test-dependencies:
+        patterns:
+          - 'Microsoft.NET.Test.Sdk'
+          - 'xunit*'
+          - 'coverlet.*'
+          - 'Moq'
+          - 'Shouldly'
+          - 'AwesomeAssertions'
+      mediator:
+        patterns:
+          - 'Mediator.*'
