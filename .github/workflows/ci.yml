@@ -1,33 +1,88 @@
 name: Build and Test
 
-on: 
+on:
   workflow_dispatch:
+  workflow_call:
   push:
     branches:
       - main
     paths:
       - 'src/**'
+      - 'tests/**'
+      - 'Directory.*.props'
+      - '*.slnx'
+      - 'global.json'
+      - 'nuget.config'
+      - '.github/workflows/**'
   pull_request:
     branches:
       - main
     paths:
       - 'src/**'
+      - 'tests/**'
+      - 'Directory.*.props'
+      - '*.slnx'
+      - 'global.json'
+      - 'nuget.config'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  # When called from publish.yml, github.workflow is the caller's name, so releases don't cancel CI runs.
+  group: ${{ github.workflow }}-ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 env:
   SOLUTION_FILE: NimblePros.SharedKernel.slnx
-  
+  PACK_OUTPUT: artifacts/package/release
+  TEST_RESULTS: artifacts/test-results
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v7
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v6
-      with:
-        dotnet-version: 11.0.x
-    - name: Build
-      run: dotnet build "${{ env.SOLUTION_FILE }}" --configuration Release
-    - name: Test
-      run: dotnet test "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore
-      
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: 11.0.x
+          cache: true
+          cache-dependency-path: '**/packages.lock.json'
+
+      - name: Restore
+        run: dotnet restore "${{ env.SOLUTION_FILE }}" --locked-mode
+
+      - name: Build
+        run: dotnet build "${{ env.SOLUTION_FILE }}" --configuration Release --no-restore
+
+      - name: Test
+        run: >
+          dotnet test "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore
+          --report-xunit-trx
+          --coverlet --coverlet-output-format cobertura
+          --results-directory "${{ env.TEST_RESULTS }}"
+
+      - name: Pack
+        run: dotnet pack "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore --output "${{ env.PACK_OUTPUT }}"
+
+      - name: Upload test results and coverage
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: test-results
+          path: ${{ env.TEST_RESULTS }}
+          if-no-files-found: warn
+
+      - name: Upload package
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: nuget-package
+          path: ${{ env.PACK_OUTPUT }}/*.*nupkg
+          if-no-files-found: error

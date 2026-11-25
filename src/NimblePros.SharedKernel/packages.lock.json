@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dependencies": {
+    "net11.0": {
+      "Ardalis.GuardClauses": {
+        "type": "Direct",
+        "requested": "[6.0.0, )",
+        "resolved": "6.0.0",
+        "contentHash": "VPCr46YYHjcnunQpixMP/LDH56s85oTvu+wJ4zXu4JNYOm76VD0veDX3gneMV8w1XPnwJWUHrWJXrhaPAJM6QA=="
+      },
+      "Ardalis.Specification": {
+        "type": "Direct",
+        "requested": "[10.0.0, )",
+        "resolved": "10.0.0",
+        "contentHash": "gzIybrs66DqZPMYwumDHCh3ELPmt77CMOoOma9oPkUaBxtKJfvJtfet4kx4WL9JaVUDDZK3IYq673TPLcU+/FA=="
+      },
+      "Mediator.Abstractions": {
+        "type": "Direct",
+        "requested": "[3.0.2, )",
+        "resolved": "3.0.2",
+        "contentHash": "TytjnyN8gLObZBxkM7HHPFJF3LHtk6Y8mHW56ONuXRuVEK6Fmed3f0z79H9TpmoZQP2zQAIS4/0O9R2w0v02qw=="
+      }
+    }
+  }
+}
