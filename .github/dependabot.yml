@@ -16,7 +16,7 @@ updates:
     groups:
       test-dependencies:
         patterns:
-          - 'Microsoft.NET.Test.Sdk'
+          - 'Microsoft.Testing.*'
           - 'xunit*'
           - 'coverlet.*'
           - 'Moq'

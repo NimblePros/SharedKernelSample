@@ -11,6 +11,7 @@ on:
       - 'tests/**'
       - 'Directory.*.props'
       - '*.slnx'
+      - 'global.json'
       - 'nuget.config'
       - '.github/workflows/**'
   pull_request:
@@ -21,6 +22,7 @@ on:
       - 'tests/**'
       - 'Directory.*.props'
       - '*.slnx'
+      - 'global.json'
       - 'nuget.config'
       - '.github/workflows/**'
 
@@ -63,8 +65,8 @@ jobs:
       - name: Test
         run: >
           dotnet test "${{ env.SOLUTION_FILE }}" --configuration Release --no-build --no-restore
-          --logger trx
-          --collect "XPlat Code Coverage"
+          --report-xunit-trx
+          --coverlet --coverlet-output-format cobertura
           --results-directory "${{ env.TEST_RESULTS }}"
 
       - name: Pack
